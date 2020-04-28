@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {ProviderEffects} from './provider.effects';
 
-describe('ProviderEffects', () => {
+xdescribe('ProviderEffects', () => {
   let actions$: Observable<any>;
   let effects: ProviderEffects;
 

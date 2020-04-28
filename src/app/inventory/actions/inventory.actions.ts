@@ -3,7 +3,7 @@ import {Pageable} from '../../base/models/pageable';
 import {CreateInventoryRequest} from '../models/create-inventory-request';
 
 export const getInventories = createAction(
-  '[Inventory] Load Inventories',
+  '[Inventory] Get Inventories',
   props<{ params: { [key: string]: string; }, pageable: Pageable }>()
 );
 export const getInventoriesSuccess = createAction('[Inventory] Load Inventories Success', props<{ data: any }>());

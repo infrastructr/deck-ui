@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {InventoryEffects} from './inventory.effects';
 
-describe('InventoryEffects', () => {
+xdescribe('InventoryEffects', () => {
   let actions$: Observable<any>;
   let effects: InventoryEffects;
 
