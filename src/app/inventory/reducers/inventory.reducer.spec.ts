@@ -7,7 +7,7 @@ describe('Inventories Reducer', () => {
 
       const result = inventoriesReducer(initialInventoriesState, action);
 
-      expect(result).toBe(inventoriesReducer);
+      expect(result).toBe(initialInventoriesState);
     });
   });
 });
