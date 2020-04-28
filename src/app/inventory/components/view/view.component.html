@@ -1,0 +1,12 @@
+<ng-template #nav>
+  <app-side-nav [navElements]="navElements$ | async"></app-side-nav>
+</ng-template>
+
+<ng-template #page>
+  <div>
+    <p>{{ (inventory$ | async)?.name }}</p>
+    <p>{{ (inventory$ | async)?.description }}</p>
+  </div>
+</ng-template>
+
+<app-page [nav]="nav" [page]="page"></app-page>

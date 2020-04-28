@@ -1,0 +1,15 @@
+<ng-template #nav>
+  <app-side-nav [navElements]="navElements$ | async"></app-side-nav>
+</ng-template>
+
+<ng-template #page>
+  <div>
+    <p>{{ (host$ | async)?.name }}</p>
+    <p>{{ (host$ | async)?.description }}</p>
+  </div>
+  <div class="text-right">
+    <button (click)="showInit()" class="ml-3" color="primary" mat-raised-button>Init</button>
+  </div>
+</ng-template>
+
+<app-page [nav]="nav" [page]="page"></app-page>

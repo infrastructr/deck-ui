@@ -1,0 +1,20 @@
+.create-project-form {
+  display: flex;
+  justify-content: center;
+  margin: 5rem 0;
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 10rem;
+  }
+
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

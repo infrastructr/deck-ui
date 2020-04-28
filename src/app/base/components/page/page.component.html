@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row pt-4">
+    <div class="col-sm-2">
+      <ng-container
+        *ngTemplateOutlet="nav">
+      </ng-container>
+    </div>
+    <div class="col-sm-8">
+      <div class="mat-elevation-z4">
+        <mat-toolbar>{{ title$ | async }}</mat-toolbar>
+        <div class="p-4">
+          <ng-container
+            *ngTemplateOutlet="page">
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

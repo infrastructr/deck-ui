@@ -1,1 +1,71 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+// Import Bootstrap Reboot
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities/spacing";
+@import "~bootstrap/scss/utilities/sizing";
+@import "~bootstrap/scss/utilities/float";
+@import "~bootstrap/scss/utilities/text";
+@import "~bootstrap/scss/utilities/display";
+@import "styles/reset";
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$deck-ui-primary: mat-palette($mat-indigo, A200);
+$deck-ui-accent: mat-palette($mat-grey, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$deck-ui-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$deck-ui-theme: mat-light-theme($deck-ui-primary, $deck-ui-accent, $deck-ui-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($deck-ui-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-row:hover {
+  cursor: pointer;
+  background-color: map-get($deck-ui-accent, 100);
+}
+
+mat-tree > a {
+  color: map-get($deck-ui-primary, 'text');
+}
+
+.mat-toolbar {
+  color: map-get($deck-ui-accent, 600);
+}
+
+.mat-list-item-content  {
+  color: map-get($deck-ui-accent, 600);
+}
+mat-nav-list.mat-list-base {
+  padding-top: 0;
+}
+
+.bg-dark {
+  background-color: map-get($deck-ui-accent, 700);
+}
+
+.text-white {
+  color: white;
+}

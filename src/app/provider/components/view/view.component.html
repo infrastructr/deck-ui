@@ -1,0 +1,9 @@
+<ng-template #page>
+  <div>
+    <p>{{ (provider$ | async)?.name }}</p>
+    <p>{{ (provider$ | async)?.description }}</p>
+    <p>{{ (provider$ | async)?.type }}</p>
+  </div>
+</ng-template>
+
+<app-page [page]="page"></app-page>

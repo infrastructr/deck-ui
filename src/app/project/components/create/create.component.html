@@ -1,0 +1,22 @@
+<ng-template #page>
+  <form #f="ngForm" (ngSubmit)="submit()">
+    <mat-form-field class="d-block">
+      <label>
+        <input [(ngModel)]="model.name" matInput name="name" placeholder="Name" required>
+      </label>
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <label>
+        <input [(ngModel)]="model.description" matInput name="description" placeholder="Description">
+      </label>
+    </mat-form-field>
+    <div class="text-right">
+      <button (click)="navigateBack()" class="ml-3" color="accent" mat-raised-button routerLink="" type="button">
+        Cancel
+      </button>
+      <button class="ml-3" color="primary" mat-raised-button type="submit">Create</button>
+    </div>
+  </form>
+</ng-template>
+
+<app-page [page]="page"></app-page>

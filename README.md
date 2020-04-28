@@ -1,27 +1,26 @@
-# DeckUi
+[![Travis (.org) branch](https://img.shields.io/travis/infrastructr/deck-ui/master)](https://travis-ci.org/infrastructr/deck-ui)
+[![Codecov](https://img.shields.io/codecov/c/github/infrastructr/deck-ui)](https://codecov.io/gh/infrastructr/deck-ui)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/infrastructr/deck-ui)](https://codeclimate.com/github/infrastructr/deck-ui)[
+![Docker Pulls](https://img.shields.io/docker/pulls/infrastructr/deck-ui)](https://hub.docker.com/r/infrastructr/deck-ui)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/infrastructr/deck-ui)](https://hub.docker.com/repository/docker/infrastructr/deck-ui/tags?page=1)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+# Deck UI
+Infrastructr Deck UI.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [NodeJS](https://nodejs.org/de/download/) >= 12.x
+- [Angular CLI](https://cli.angular.io/) >=9.x
 
-## Code scaffolding
+## Local
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    $ npm install
+    $ ng serve
 
-## Build
+## Maintainers
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- [build-failure](https://github.com/build-failure)
 
-## Running unit tests
+## License
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+See the [LICENSE.md](LICENSE.md) file for details.

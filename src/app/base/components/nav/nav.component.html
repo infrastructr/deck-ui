@@ -1,0 +1,22 @@
+<mat-toolbar class="mat-elevation-z6 h-7" color="primary">
+
+  <img alt="" class="mr-3" height="50" src="/assets/brand.png">
+
+  <div *ngIf="user$ | async">
+    <button mat-button routerLink="/projects">Projects</button>
+
+    <button mat-button routerLink="/providers">Providers</button>
+
+    <button disabled mat-button>Wizards</button>
+  </div>
+
+  <span class="fill-remaining-space"></span>
+
+  <mat-menu #userMenu="matMenu">
+    <button (click)="logout()" mat-menu-item>Logout</button>
+  </mat-menu>
+  <button *ngIf="user$ | async" [matMenuTriggerFor]="userMenu" mat-icon-button>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+</mat-toolbar>
