@@ -45,7 +45,7 @@ export const inventoriesReducer = createReducer(
     isGetInventoriesSuccess: true,
     isLoading: false,
   })),
-  on(InventoryActions.getInventoriesFailure, (state,) => ({
+  on(InventoryActions.getInventoriesFailure, (state, ) => ({
     ...state,
     isGetInventoriesSuccess: false,
     isLoading: false,
@@ -66,7 +66,7 @@ export const inventoryReducer = createReducer(
     isCreateSuccess: true,
     isLoading: false,
   })),
-  on(InventoryActions.createInventoryFailure, (state,) => ({
+  on(InventoryActions.createInventoryFailure, (state, ) => ({
     ...state,
     isCreateSuccess: false,
     isLoading: false,
@@ -81,7 +81,7 @@ export const inventoryReducer = createReducer(
     isGetInventorySuccess: true,
     isLoading: false,
   })),
-  on(InventoryActions.getInventoryFailure, (state,) => ({
+  on(InventoryActions.getInventoryFailure, (state, ) => ({
     ...state,
     isGetInventorySuccess: false,
     isLoading: false,

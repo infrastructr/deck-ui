@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {ProjectEffects} from './project.effects';
 
 xdescribe('ProjectEffects', () => {
-  let actions$: Observable<any>;
+  const actions$ = new Observable<any>();
   let effects: ProjectEffects;
 
   beforeEach(() => {

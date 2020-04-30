@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {ProviderEffects} from './provider.effects';
 
 xdescribe('ProviderEffects', () => {
-  let actions$: Observable<any>;
+  const actions$ = new Observable<any>();
   let effects: ProviderEffects;
 
   beforeEach(() => {
@@ -16,7 +16,7 @@ xdescribe('ProviderEffects', () => {
       ]
     });
 
-    effects = TestBed.get<ProviderEffects>(ProviderEffects);
+    effects = TestBed.inject<ProviderEffects>(ProviderEffects);
   });
 
   it('should be created', () => {

@@ -45,7 +45,7 @@ export const groupsReducer = createReducer(
     isGetSuccess: true,
     isLoading: false,
   })),
-  on(GroupActions.getGroupsFailure, (state,) => ({
+  on(GroupActions.getGroupsFailure, (state, ) => ({
     ...state,
     isGetSuccess: false,
     isLoading: false,

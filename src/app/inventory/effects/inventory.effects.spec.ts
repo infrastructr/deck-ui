@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {InventoryEffects} from './inventory.effects';
 
 xdescribe('InventoryEffects', () => {
-  let actions$: Observable<any>;
+  const actions$ = new Observable<any>();
   let effects: InventoryEffects;
 
   beforeEach(() => {
@@ -16,7 +16,7 @@ xdescribe('InventoryEffects', () => {
       ]
     });
 
-    effects = TestBed.get<InventoryEffects>(InventoryEffects);
+    effects = TestBed.inject<InventoryEffects>(InventoryEffects);
   });
 
   it('should be created', () => {

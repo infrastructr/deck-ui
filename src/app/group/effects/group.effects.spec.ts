@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {GroupEffects} from './group.effects';
 
 xdescribe('GroupEffects', () => {
-  let actions$: Observable<any>;
+  const actions$ = new Observable<any>();
   let effects: GroupEffects;
 
   beforeEach(() => {
@@ -16,7 +16,7 @@ xdescribe('GroupEffects', () => {
       ]
     });
 
-    effects = TestBed.get<GroupEffects>(GroupEffects);
+    effects = TestBed.inject<GroupEffects>(GroupEffects);
   });
 
   it('should be created', () => {

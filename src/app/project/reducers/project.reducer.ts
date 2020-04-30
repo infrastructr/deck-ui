@@ -45,7 +45,7 @@ export const projectsReducer = createReducer(
     isGetProjectsSuccess: true,
     isLoading: false,
   })),
-  on(ProjectActions.getProjectsFailure, (state,) => ({
+  on(ProjectActions.getProjectsFailure, (state, ) => ({
     ...state,
     isGetProjectsSuccess: false,
     isLoading: false,
@@ -66,7 +66,7 @@ export const projectReducer = createReducer(
     isCreateSuccess: true,
     isLoading: false,
   })),
-  on(ProjectActions.createProjectFailure, (state,) => ({
+  on(ProjectActions.createProjectFailure, (state, ) => ({
     ...state,
     isCreateSuccess: false,
     isLoading: false,
@@ -81,7 +81,7 @@ export const projectReducer = createReducer(
     isGetProjectSuccess: true,
     isLoading: false,
   })),
-  on(ProjectActions.getProjectFailure, (state,) => ({
+  on(ProjectActions.getProjectFailure, (state, ) => ({
     ...state,
     isGetProjectSuccess: false,
     isLoading: false,

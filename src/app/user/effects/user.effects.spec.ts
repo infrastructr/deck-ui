@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {UserEffects} from './user.effects';
 
 xdescribe('UserEffects', () => {
-  let actions$: Observable<any>;
+  const actions$ = new Observable<any>();
   let effects: UserEffects;
 
   beforeEach(() => {
@@ -16,7 +16,7 @@ xdescribe('UserEffects', () => {
       ]
     });
 
-    effects = TestBed.get<UserEffects>(UserEffects);
+    effects = TestBed.inject<UserEffects>(UserEffects);
   });
 
   it('should be created', () => {

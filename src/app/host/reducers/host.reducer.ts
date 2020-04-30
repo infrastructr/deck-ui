@@ -59,7 +59,7 @@ export const hostsReducer = createReducer(
     isGetSuccess: true,
     isLoading: false,
   })),
-  on(HostActions.getHostsFailure, (state,) => ({
+  on(HostActions.getHostsFailure, (state, ) => ({
     ...state,
     isGetSuccess: false,
     isLoading: false,
@@ -94,7 +94,7 @@ export const hostReducer = createReducer(
     isGetSuccess: true,
     isLoading: false,
   })),
-  on(HostActions.getHostFailure, (state,) => ({
+  on(HostActions.getHostFailure, (state, ) => ({
     ...state,
     isGetSuccess: false,
     isLoading: false,
@@ -114,7 +114,7 @@ export const hostInitReducer = createReducer(
     isGetHostInitSuccess: true,
     isLoading: false,
   })),
-  on(HostActions.initHostFailure, (state,) => ({
+  on(HostActions.initHostFailure, (state, ) => ({
     ...state,
     isGetHostInitSuccess: false,
     isLoading: false,

@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {HostEffects} from './host.effects';
 
 xdescribe('HostEffects', () => {
-  let actions$: Observable<any>;
+  const actions$: Observable<any> = new Observable<any>();
   let effects: HostEffects;
 
   beforeEach(() => {
@@ -16,7 +16,7 @@ xdescribe('HostEffects', () => {
       ]
     });
 
-    effects = TestBed.get<HostEffects>(HostEffects);
+    effects = TestBed.inject<HostEffects>(HostEffects);
   });
 
   it('should be created', () => {

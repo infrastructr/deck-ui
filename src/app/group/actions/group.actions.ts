@@ -2,9 +2,9 @@ import {createAction, props} from '@ngrx/store';
 import {Pageable} from '../../base/models/pageable';
 import {CreateGroupRequest} from '../models/create-group-request';
 
-export const getGroups = createAction('[Group] Get Group', props<{ params: { [key: string]: string; }, pageable: Pageable }>());
-export const getGroupsSuccess = createAction('[Group] Get Group Success', props<{ data: any }>());
-export const getGroupsFailure = createAction('[Group] Get Group Failure', props<{ error: any }>());
+export const getGroups = createAction('[Group] Get Groups', props<{ params: { [key: string]: string; }, pageable: Pageable }>());
+export const getGroupsSuccess = createAction('[Group] Get Groups Success', props<{ data: any }>());
+export const getGroupsFailure = createAction('[Group] Get Groups Failure', props<{ error: any }>());
 
 export const createGroup = createAction(
   '[Group] Create Group',

@@ -45,7 +45,7 @@ export const providersReducer = createReducer(
     isGetProvidersSuccess: true,
     isLoading: false,
   })),
-  on(ProviderActions.getProvidersFailure, (state,) => ({
+  on(ProviderActions.getProvidersFailure, (state, ) => ({
     ...state,
     isGetProvidersSuccess: false,
     isLoading: false,
@@ -66,7 +66,7 @@ export const providerReducer = createReducer(
     isCreateSuccess: true,
     isLoading: false,
   })),
-  on(ProviderActions.createProviderFailure, (state,) => ({
+  on(ProviderActions.createProviderFailure, (state, ) => ({
     ...state,
     isCreateSuccess: false,
     isLoading: false,
@@ -81,7 +81,7 @@ export const providerReducer = createReducer(
     isGetProviderSuccess: true,
     isLoading: false,
   })),
-  on(ProviderActions.getProviderFailure, (state,) => ({
+  on(ProviderActions.getProviderFailure, (state, ) => ({
     ...state,
     isGetProviderSuccess: false,
     isLoading: false,
