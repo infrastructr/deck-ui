@@ -32,6 +32,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {BaseModule} from './base/base.module';
 import {ProviderModule} from './provider/provider.module';
 import {InventoryModule} from './inventory/inventory.module';
+import {GroupModule} from './group/group.module';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import {InventoryModule} from './inventory/inventory.module';
     MatPaginatorModule,
     MatTreeModule,
     BaseModule,
+    GroupModule,
   ],
   providers: [
     {

@@ -15,6 +15,9 @@ import {CreateComponent as ProviderCreateComponent} from './provider/components/
 import {ListComponent as InventoryListComponent} from './inventory/components/list/list.component';
 import {ViewComponent as InventoryViewComponent} from './inventory/components/view/view.component';
 import {CreateComponent as InventoryCreateComponent} from './inventory/components/create/create.component';
+import {ListComponent as GroupListComponent} from './group/components/list/list.component';
+import {ViewComponent as GroupViewComponent} from './group/components/view/view.component';
+import {CreateComponent as GroupCreateComponent} from './group/components/create/create.component';
 
 const routes: Routes = [
   {
@@ -51,6 +54,21 @@ const routes: Routes = [
     path: 'projects/:projectId/inventories/:inventoryId/hosts/:hostId',
     component: HostViewComponent,
     data: {title: 'Host'},
+  },
+  {
+    path: 'projects/:projectId/inventories/:inventoryId/groups',
+    component: GroupListComponent,
+    data: {title: 'Groups'},
+  },
+  {
+    path: 'projects/:projectId/inventories/:inventoryId/groups/create',
+    component: GroupCreateComponent,
+    data: {title: 'New Group'},
+  },
+  {
+    path: 'projects/:projectId/inventories/:inventoryId/groups/:groupId',
+    component: GroupViewComponent,
+    data: {title: 'Group'},
   },
   {
     path: 'providers',
