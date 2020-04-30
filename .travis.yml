@@ -5,6 +5,8 @@ dist: trusty
 sudo: required
 services:
   - docker
+env:
+  - IMAGE_NAME='infrastructr/deck-ui'
 before_script:
   - npm install -g @angular/cli
 script:
