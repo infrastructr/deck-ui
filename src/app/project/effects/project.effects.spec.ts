@@ -16,7 +16,7 @@ xdescribe('ProjectEffects', () => {
       ]
     });
 
-    effects = TestBed.get<ProjectEffects>(ProjectEffects);
+    effects = TestBed.inject<ProjectEffects>(ProjectEffects);
   });
 
   it('should be created', () => {
