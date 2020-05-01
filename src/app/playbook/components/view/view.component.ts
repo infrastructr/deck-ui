@@ -1,56 +1,61 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {NavElement} from '../../../base/components/side-nav/models/nav-element';
 import {select, Store} from '@ngrx/store';
-import {ProjectState} from '../../reducers/project.reducer';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {Project} from '../../models/project';
-import {projectSelector} from '../../selectors/project.selectors';
-import {getProject} from '../../actions/project.actions';
 import {RouterReducerState} from '@ngrx/router-store';
 import * as routeSelectors from '../../../routes/selectors/route-selectors';
 import {takeUntil} from 'rxjs/operators';
+import {playbookSelector} from '../../selectors/playbook.selectors';
+import {PlaybookState} from '../../reducers/playbook.reducer';
+import {getPlaybook} from '../../actions/playbook.actions';
+import {Playbook} from '../../models/playbook';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-project-view',
+  selector: 'app-playbook-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit, OnDestroy {
+
   navElements$: BehaviorSubject<NavElement[]>;
-  project$: Observable<Project>;
-  projectId$: Observable<string>;
+  playbook$: Observable<Playbook>;
+  playbookId$: Observable<string>;
   private unsubscribe$ = new Subject();
 
   constructor(
-    private store: Store<ProjectState>,
+    public dialog: MatDialog,
+    private store: Store<PlaybookState>,
     private routerStore: Store<RouterReducerState>,
   ) {
     this.navElements$ = new BehaviorSubject<NavElement[]>([]);
-    this.projectId$ = this.routerStore.select(routeSelectors.selectRouteParam('projectId'));
-    this.projectId$.pipe(
-      takeUntil(this.unsubscribe$),
-    ).subscribe((projectId) => {
-      if (projectId) {
-        this.store.dispatch(getProject({id: projectId}));
+    this.playbookId$ = this.routerStore.select(routeSelectors.selectRouteParam('playbookId'))
+      .pipe(
+        takeUntil(this.unsubscribe$),
+      );
+    this.playbookId$.subscribe((playbookId) => {
+      if (playbookId) {
+        this.store.dispatch(getPlaybook({id: playbookId}));
         this.navElements$.next(ViewComponent.getNavElements());
       }
     });
-    this.project$ = store.pipe(
-      select(projectSelector),
+
+    this.playbook$ = store.pipe(
+      select(playbookSelector),
     );
   }
 
   private static getNavElements(): NavElement[] {
     return [
       {
-        name: 'Inventories',
-        icon: 'filter_none',
-        routerLink: ['inventories'],
+        name: 'Roles',
+        icon: 'memory',
+        routerLink: ['roles'],
       },
       {
-        name: 'Playbooks',
-        icon: 'theaters',
-        routerLink: ['playbooks'],
+        name: 'Vars',
+        icon: 'layers',
+        routerLink: ['vars'],
       },
     ];
   }
@@ -62,5 +67,4 @@ export class ViewComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
-
 }

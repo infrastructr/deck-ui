@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ColumnDefinitions} from '../../../base/components/data-table/models/column-definitions';
 import {SimpleColumnDefinition} from '../../../base/components/data-table/models/simple-column-definition';
 import {select, Store} from '@ngrx/store';
-import {InventoriesState} from '../../reducers/inventory.reducer';
-import {InventoryDataSource} from '../../data-sources/inventory-data-source';
+import {PlaybooksState} from '../../reducers/playbook.reducer';
+import {PlaybookDataSource} from '../../data-sources/playbook-data-source';
 import {RouterReducerState} from '@ngrx/router-store';
 import * as routeSelectors from '../../../routes/selectors/route-selectors';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
@@ -11,14 +11,14 @@ import {takeUntil} from 'rxjs/operators';
 import {NavElement} from '../../../base/components/side-nav/models/nav-element';
 
 @Component({
-  selector: 'app-inventory-list',
+  selector: 'app-playbook-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnDestroy {
   navElements$: BehaviorSubject<NavElement[]>;
   projectId$: Observable<string>;
-  dataSource: InventoryDataSource;
+  dataSource: PlaybookDataSource;
   columnDefinitions: ColumnDefinitions = new ColumnDefinitions([
     new SimpleColumnDefinition('name', 'Name'),
     new SimpleColumnDefinition('description', 'Description'),
@@ -26,7 +26,7 @@ export class ListComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
 
   constructor(
-    private store: Store<InventoriesState>,
+    private store: Store<PlaybooksState>,
     private routerStore: Store<RouterReducerState>,
   ) {
     this.projectId$ = this.routerStore.pipe(
@@ -40,12 +40,12 @@ export class ListComponent implements OnInit, OnDestroy {
       {
         name: 'Inventories',
         icon: 'filter_none',
-        routerLink: ['./'],
+        routerLink: ['../inventories'],
       },
       {
         name: 'Playbooks',
         icon: 'theaters',
-        routerLink: ['../playbooks'],
+        routerLink: ['./'],
       },
     ];
   }
@@ -54,7 +54,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this.navElements$ = new BehaviorSubject<NavElement[]>([]);
     this.navElements$.next(ListComponent.getNavElements());
     this.projectId$.subscribe((projectId) => {
-      this.dataSource = new InventoryDataSource(this.store, {projectId});
+      this.dataSource = new PlaybookDataSource(this.store, {projectId});
     });
   }
 

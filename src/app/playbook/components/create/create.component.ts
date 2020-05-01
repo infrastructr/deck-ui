@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CreateInventoryRequest} from '../../models/create-inventory-request';
+import {CreatePlaybookRequest} from '../../models/create-playbook-request';
 import {select, Store} from '@ngrx/store';
-import {InventoriesState} from '../../reducers/inventory.reducer';
-import {createInventory, resetInventory} from '../../actions/inventory.actions';
+import {PlaybooksState} from '../../reducers/playbook.reducer';
+import {createPlaybook, resetPlaybook} from '../../actions/playbook.actions';
 import {Location} from '@angular/common';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {NavElement} from '../../../base/components/side-nav/models/nav-element';
@@ -11,37 +11,37 @@ import {takeUntil} from 'rxjs/operators';
 import * as routeSelectors from '../../../routes/selectors/route-selectors';
 import {Form} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {inventoryIsCreateSuccessSelector} from '../../selectors/inventory.selectors';
+import {playbookIsCreateSuccessSelector} from '../../selectors/playbook.selectors';
 
 @Component({
-  selector: 'app-inventory-create',
+  selector: 'app-playbook-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit, OnDestroy {
   navElements$: BehaviorSubject<NavElement[]>;
   projectId$: Observable<string>;
-  model: CreateInventoryRequest;
+  model: CreatePlaybookRequest;
   private unsubscribe$ = new Subject();
   private isSubmit$ = new BehaviorSubject<boolean>(false);
   private submitRequirements: Observable<any>[];
   private isCreateSuccess$: Observable<boolean>;
 
   constructor(
-    private store: Store<InventoriesState>,
+    private store: Store<PlaybooksState>,
     private location: Location,
     private routerStore: Store<RouterReducerState>,
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    this.model = {} as CreateInventoryRequest;
+    this.model = {} as CreatePlaybookRequest;
     this.projectId$ = this.routerStore.pipe(
       takeUntil(this.unsubscribe$),
       select(routeSelectors.selectRouteParam('projectId'))
     );
     this.isCreateSuccess$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
-      select(inventoryIsCreateSuccessSelector),
+      select(playbookIsCreateSuccessSelector),
     );
 
     this.submitRequirements = [this.isSubmit$, this.projectId$];
@@ -49,14 +49,14 @@ export class CreateComponent implements OnInit, OnDestroy {
       result => {
         const [isSubmit, projectId] = result;
         if (isSubmit && projectId) {
-          this.store.dispatch(createInventory({request: this.model, params: {projectId}}));
+          this.store.dispatch(createPlaybook({request: this.model, params: {projectId}}));
           this.isSubmit$.next(false);
         }
       });
 
     this.isCreateSuccess$.subscribe(next => {
       if (next) {
-        this.store.dispatch(resetInventory());
+        this.store.dispatch(resetPlaybook());
         this.router.navigate(['../'], {relativeTo: route});
       }
     });
@@ -67,12 +67,12 @@ export class CreateComponent implements OnInit, OnDestroy {
       {
         name: 'Inventories',
         icon: 'filter_none',
-        routerLink: ['../'],
+        routerLink: ['../../inventories'],
       },
       {
         name: 'Playbooks',
         icon: 'theaters',
-        routerLink: ['../../playbooks'],
+        routerLink: ['../'],
       },
     ];
   }

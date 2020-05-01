@@ -18,6 +18,9 @@ import {CreateComponent as InventoryCreateComponent} from './inventory/component
 import {ListComponent as GroupListComponent} from './group/components/list/list.component';
 import {ViewComponent as GroupViewComponent} from './group/components/view/view.component';
 import {CreateComponent as GroupCreateComponent} from './group/components/create/create.component';
+import {ListComponent as PlaybookListComponent} from './playbook/components/list/list.component';
+import {ViewComponent as PlaybookViewComponent} from './playbook/components/view/view.component';
+import {CreateComponent as PlaybookCreateComponent} from './playbook/components/create/create.component';
 
 const routes: Routes = [
   {
@@ -99,6 +102,21 @@ const routes: Routes = [
     path: 'projects/:projectId/inventories/:inventoryId',
     component: InventoryViewComponent,
     data: {title: 'Inventory'},
+  },
+  {
+    path: 'projects/:projectId/playbooks',
+    component: PlaybookListComponent,
+    data: {title: 'Playbooks'},
+  },
+  {
+    path: 'projects/:projectId/playbooks/create',
+    component: PlaybookCreateComponent,
+    data: {title: 'New Playbook'},
+  },
+  {
+    path: 'projects/:projectId/playbooks/:playbookId',
+    component: PlaybookViewComponent,
+    data: {title: 'Playbook'},
   },
   {
     path: '**',
