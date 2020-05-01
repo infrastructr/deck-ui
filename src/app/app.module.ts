@@ -34,6 +34,7 @@ import {ProviderModule} from './provider/provider.module';
 import {InventoryModule} from './inventory/inventory.module';
 import {GroupModule} from './group/group.module';
 import {PlaybookModule} from './playbook/playbook.module';
+import {RoleModule} from './role/role.module';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import {PlaybookModule} from './playbook/playbook.module';
     BaseModule,
     GroupModule,
     PlaybookModule,
+    RoleModule,
   ],
   providers: [
     {

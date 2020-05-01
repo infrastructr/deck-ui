@@ -1,0 +1,10 @@
+<ng-template #nav>
+  <app-side-nav [navElements]="navElements$ | async"></app-side-nav>
+</ng-template>
+
+<ng-template #page>
+  <app-data-table [columnDefinitions]="columnDefinitions" [dataSource]="dataSource"></app-data-table>
+</ng-template>
+
+<app-page [nav]="nav" [page]="page">
+</app-page>

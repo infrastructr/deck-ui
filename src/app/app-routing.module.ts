@@ -21,6 +21,9 @@ import {CreateComponent as GroupCreateComponent} from './group/components/create
 import {ListComponent as PlaybookListComponent} from './playbook/components/list/list.component';
 import {ViewComponent as PlaybookViewComponent} from './playbook/components/view/view.component';
 import {CreateComponent as PlaybookCreateComponent} from './playbook/components/create/create.component';
+import {ListComponent as RoleListComponent} from './role/components/list/list.component';
+import {ViewComponent as RoleViewComponent} from './role/components/view/view.component';
+import {CreateComponent as RoleCreateComponent} from './role/components/create/create.component';
 
 const routes: Routes = [
   {
@@ -72,6 +75,21 @@ const routes: Routes = [
     path: 'projects/:projectId/inventories/:inventoryId/groups/:groupId',
     component: GroupViewComponent,
     data: {title: 'Group'},
+  },
+  {
+    path: 'projects/:projectId/playbooks/:playbookId/roles',
+    component: RoleListComponent,
+    data: {title: 'Roles'},
+  },
+  {
+    path: 'projects/:projectId/playbooks/:playbookId/roles/create',
+    component: RoleCreateComponent,
+    data: {title: 'New Role'},
+  },
+  {
+    path: 'projects/:projectId/playbooks/:playbookId/roles/:roleId',
+    component: RoleViewComponent,
+    data: {title: 'Role'},
   },
   {
     path: 'providers',

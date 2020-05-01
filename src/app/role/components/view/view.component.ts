@@ -5,43 +5,43 @@ import {select, Store} from '@ngrx/store';
 import {RouterReducerState} from '@ngrx/router-store';
 import * as routeSelectors from '../../../routes/selectors/route-selectors';
 import {takeUntil} from 'rxjs/operators';
-import {playbookSelector} from '../../selectors/playbook.selectors';
-import {PlaybookState} from '../../reducers/playbook.reducer';
-import {getPlaybook} from '../../actions/playbook.actions';
-import {Playbook} from '../../models/playbook';
+import {roleSelector} from '../../selectors/role.selectors';
+import {RoleState} from '../../reducers/role.reducer';
+import {getRole} from '../../actions/role.actions';
+import {Role} from '../../models/role';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-playbook-view',
+  selector: 'app-role-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit, OnDestroy {
 
   navElements$: BehaviorSubject<NavElement[]>;
-  playbook$: Observable<Playbook>;
-  playbookId$: Observable<string>;
+  role$: Observable<Role>;
+  roleId$: Observable<string>;
   private unsubscribe$ = new Subject();
 
   constructor(
     public dialog: MatDialog,
-    private store: Store<PlaybookState>,
+    private store: Store<RoleState>,
     private routerStore: Store<RouterReducerState>,
   ) {
     this.navElements$ = new BehaviorSubject<NavElement[]>([]);
-    this.playbookId$ = this.routerStore.select(routeSelectors.selectRouteParam('playbookId'))
+    this.roleId$ = this.routerStore.select(routeSelectors.selectRouteParam('roleId'))
       .pipe(
         takeUntil(this.unsubscribe$),
       );
-    this.playbookId$.subscribe((playbookId) => {
-      if (playbookId) {
-        this.store.dispatch(getPlaybook({id: playbookId}));
+    this.roleId$.subscribe((roleId) => {
+      if (roleId) {
+        this.store.dispatch(getRole({id: roleId}));
         this.navElements$.next(ViewComponent.getNavElements());
       }
     });
 
-    this.playbook$ = store.pipe(
-      select(playbookSelector),
+    this.role$ = store.pipe(
+      select(roleSelector),
     );
   }
 
@@ -50,12 +50,12 @@ export class ViewComponent implements OnInit, OnDestroy {
       {
         name: 'Roles',
         icon: 'description',
-        routerLink: ['roles'],
+        routerLink: ['../'],
       },
       {
         name: 'Vars',
         icon: 'assessment',
-        routerLink: ['vars'],
+        routerLink: ['../../vars'],
       },
     ];
   }
